@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Return of the Trump</title>
+    <script src="libs/phaser.js">
+    </script>
+    <script src = "Boot.js"></script>
+    <script src = "Preloader.js">
+    </script>
+    <script src = "StartMenu.js">
+    </script>
+    <script src = "Game.js">
+    </script>
+	<style>
+        body { 
+			padding: 0;
+			margin: 0;
+			background-color: #000000;
+		}
+	</style>
+</head>
+<body>
+    <div id="gameContainter"></div>
+<script> window.onload = function() {
+    var game = new Phaser.Game(1600,1200, Phaser.AUTO, 'gameContainer');
+    game.state.add("Boot", TrumpInvader.Boot);
+    game.state.add("Preloader", TrumpInvader.Preloader);
+    game.state.start("Boot")
+    game.state.add("StartMenu",
+    TrumpInvader.StartMenu);
+    game.state.add("Game", TrumpInvader.Game);
+    }
+    </script>
+</body>
+</html>
