@@ -7,17 +7,21 @@ TrumpInvader.Preloader.prototype = {
 	preload: function () {
 		this.load.image("startmenu", "pics/startmenu.png");
         this.load.bitmapFont("eightbitwonder", "font/eightbitwonder.png", "font/eightbitwonder.fnt");
-        this.load.image("trumpsupporter.gif", "pics/trumpsupporter.gif");
-        this.load.image("trumpsupporter2.gif", "pics/trumpsupporter2.gif");
-        this.load.image("trumpsupporter3.gif", "pics/trumpsupporter3.gif");
-        this.load.image("trumpsupporter4.gif", "pics/trumpsupporter4.gif");
-        this.load.image("trumpsupporter5.gif", "pics/trumpsupporter5.gif");
-        this.load.image("trumpsupporter6.gif", "pics/trumpsupporter6.gif");
-        this.load.image("trumpsupporter7.gif", "pics/trumpsupporter7.gif");
-        this.load.image("trumphead.gif", "pics/trumphead.gif");
-        this.load.image("lefttrumphand.gif", "pics/lefttrumphand.gif");
-        this.load.image("righttrumphand.gif", "pics/righttrumphand.gif");
-        this.load.image("EvilTrump.gif", "pics/EvilTrump.gif");
+        this.load.image("trumpsupporter", "pics/trumpsupporter.gif");
+        this.load.image("trumpsupporter2", "pics/trumpsupporter2.gif");
+        this.load.image("trumpsupporter3", "pics/trumpsupporter3.gif");
+        this.load.image("trumpsupporter4", "pics/trumpsupporter4.gif");
+        this.load.image("trumpsupporter5", "pics/trumpsupporter5.gif");
+        this.load.image("trumpsupporter6", "pics/trumpsupporter6.gif");
+        this.load.image("trumpsupporter7", "pics/trumpsupporter7.gif");
+        this.load.image("trumphead", "pics/trumphead.gif");
+        this.load.image("lefttrumphand", "pics/lefttrumphand.gif");
+        this.load.image("righttrumphand", "pics/righttrumphand.gif");
+        this.load.image("EvilTrump", "pics/EvilTrump.gif");
+        this.load.image("Blast", "pics/Blast.fw.png");
+        this.load.image("futurefighter", "pics/futurefighter.gif");
+        this.load.image("messagebox", "pics/messagebox.gif");
+        this.load.image("Trump", "pics/Trump.png");
     },
 
 	create: function () {
