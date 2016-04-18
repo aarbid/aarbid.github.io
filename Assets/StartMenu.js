@@ -6,7 +6,7 @@ TrumpInvader.StartMenu = function(game) {
 TrumpInvader.StartMenu.prototype = {
     
     create: function () {
-        startBG = this.add.image( 0, 0, 'startmenu.png');
+        startBG = this.add.image(0, 0, 'startmenu');
         startBG.inputEnabled = true;
         startBG.events.onInputDown.addOnce(this.startGame, this);
         

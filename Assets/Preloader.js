@@ -23,17 +23,7 @@ TrumpInvader.Preloader.prototype = {
         this.load.image("messagebox", "pics/messagebox.gif");
         this.load.image("Trump", "pics/Trump.png");
     },
-
-	create: function () {
-		this.state.start("Preloader");
-        this.buildWorld();
-        
-	},
     
-    buildWorld: function() {
-        this.add.image(0,0, "startmenu")
-    },
-
 	update: function () {
         this.state.start("StartMenu");
         this.ready = true;
