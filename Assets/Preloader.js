@@ -22,6 +22,14 @@ TrumpInvader.Preloader.prototype = {
         this.load.image("futurefighter", "pics/futurefighter.gif");
         this.load.image("messagebox", "pics/messagebox.gif");
         this.load.image("Trump", "pics/Trump.png");
+        this.load.audio("Bergentrückung", "sounds/Bergentrückung.mp3");
+        this.load.image("tsupporter1plane", "tsupporter1plane.gif");
+        this.load.image("tsupporter2plane", "tsupporter2plane.gif");
+        this.load.image("tsupporter3plane", "tsupporter3plane.gif");
+        this.load.image("tsupporter4plane", "tsupporter4plane.gif");
+        this.load.image("tsupporter5plane", "tsupporter5plane.gif");
+        this.load.image("tsupporter6plane", "tsupporter6plane.gif");
+        this.load.image("tsupporter7plane", "tsupporter7plane.gif");
     },
     
 	update: function () {
