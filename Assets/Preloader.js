@@ -17,19 +17,19 @@ TrumpInvader.Preloader.prototype = {
         this.load.image("trumphead", "pics/trumphead.gif");
         this.load.image("lefttrumphand", "pics/lefttrumphand.gif");
         this.load.image("righttrumphand", "pics/righttrumphand.gif");
-        this.load.image("EvilTrump", "pics/EvilTrump.gif");
-        this.load.image("Blast", "pics/Blast.fw.png");
+        this.load.atlasXML("EvilTrump", "pics/eviltrump3.png", "pics/eviltrump4.xml")
+        this.load.image("Blast", "pics/Blast.gif");
         this.load.image("futurefighter", "pics/futurefighter.gif");
         this.load.image("messagebox", "pics/messagebox.gif");
         this.load.image("Trump", "pics/Trump.png");
         this.load.audio("Bergentrückung", "sounds/Bergentrückung.mp3");
-        this.load.image("tsupporter1plane", "tsupporter1plane.gif");
-        this.load.image("tsupporter2plane", "tsupporter2plane.gif");
-        this.load.image("tsupporter3plane", "tsupporter3plane.gif");
-        this.load.image("tsupporter4plane", "tsupporter4plane.gif");
-        this.load.image("tsupporter5plane", "tsupporter5plane.gif");
-        this.load.image("tsupporter6plane", "tsupporter6plane.gif");
-        this.load.image("tsupporter7plane", "tsupporter7plane.gif");
+        this.load.image("tsupporter1plane", "pics/tsupporter1plane.gif");
+        this.load.image("tsupporter2plane", "pics/tsupporter2plane.gif");
+        this.load.image("tsupporter3plane", "pics/tsupporter3plane.gif");
+        this.load.image("tsupporter4plane", "pics/tsupporter4plane.gif");
+        this.load.image("tsupporter5plane", "pics/tsupporter5plane.gif");
+        this.load.image("tsupporter6plane", "pics/tsupporter6plane.gif");
+        this.load.image("tsupporter7plane", "pics/tsupporter7plane.gif");
     },
     
 	update: function () {
