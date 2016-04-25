@@ -24,7 +24,12 @@ TrumpInvader.Game.prototype = {
         text = this.add.bitmapText(314, 996, "eightbitwonder", "In the year 3025, America");
         text2 = this.add.bitmapText(314, 1036, "eightbitwonder", "has finally regained its former");
         text3 =this.add.bitmapText(314, 1076, "eightbitwonder", "glory after years of cruel rule");
-        
+        this.game.input.onDown.addOnce(this.replaceText, this);
     },
+    
+    replaceText: function() {
+        text.remove;
+    },
+    
     update: function() {},
 };

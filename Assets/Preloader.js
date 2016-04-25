@@ -18,7 +18,7 @@ TrumpInvader.Preloader.prototype = {
         this.load.image("lefttrumphand", "pics/lefttrumphand.gif");
         this.load.image("righttrumphand", "pics/righttrumphand.gif");
         this.load.atlasXML("EvilTrump", "pics/eviltrump3.png", "pics/eviltrump4.xml")
-        this.load.image("Blast", "pics/Blast.gif");
+        this.load.image("blast", "pics/blast.gif");
         this.load.image("futurefighter", "pics/futurefighter.gif");
         this.load.image("messagebox", "pics/messagebox.gif");
         this.load.image("Trump", "pics/Trump.png");

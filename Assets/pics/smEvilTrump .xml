@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="smEvilTrump.png">
+	<!-- Created with Adobe Flash CS6 version 12.0.0.481 -->
+	<!-- http://www.adobe.com/products/flash.html -->
+	<SubTexture name="Bitmap 19" x="0" y="0" width="1600" height="1200"/>
+	<SubTexture name="Bitmap 20" x="1600" y="0" width="1600" height="1200"/>
+	<SubTexture name="Bitmap 21" x="0" y="1200" width="1600" height="1200"/>
+	<SubTexture name="Bitmap 22" x="1600" y="1200" width="1600" height="1200"/>
+	<SubTexture name="Bitmap 23" x="0" y="2400" width="1600" height="1200"/>
+	<SubTexture name="Bitmap 24" x="1600" y="2400" width="1600" height="1200"/>
+	<SubTexture name="Bitmap 25" x="0" y="3600" width="1600" height="1200"/>
+	<SubTexture name="Bitmap 26" x="1600" y="3600" width="1600" height="1200"/>
+	<SubTexture name="Bitmap 27" x="0" y="4800" width="1600" height="1200"/>
+	<SubTexture name="Bitmap 28" x="1600" y="2400" width="1600" height="1200"/>
+	<SubTexture name="Bitmap 29" x="0" y="3600" width="1600" height="1200"/>
+	<SubTexture name="Bitmap 30" x="1600" y="4800" width="1600" height="1200"/>
+	<SubTexture name="Bitmap 31" x="0" y="2400" width="1600" height="1200"/>
+	<SubTexture name="Bitmap 32" x="1600" y="0" width="1600" height="1200"/>
+	<SubTexture name="Bitmap 33" x="0" y="1200" width="1600" height="1200"/>
+	<SubTexture name="EvilTrump.gif" x="0" y="6000" width="1600" height="1200"/>
+</TextureAtlas>
