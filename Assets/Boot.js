@@ -17,7 +17,7 @@ TrumpInvader.Boot.prototype = {
 		this.scale.pageAlignHorizontally = true;
 		this.scale.pageAlignVertically = true;
 		this.stage.forcePortrait = true;  
-		this.scale.setScreenSize(true);  
+		this.scale.updateLayout(true);  
 
 		this.input.addPointer();
         this.state.start ("Preloader")

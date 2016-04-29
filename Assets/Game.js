@@ -20,12 +20,16 @@ TrumpInvader.Game.prototype = {
     buildWorld: function() {
         this.add.image(0, 0, "EvilTrump");
         this.add.image(255, 975, "messagebox");
-        ship = this.add.image(0, 0, "futurefighter")
         //var text;
         //var text2;
         //var text3;
         var ship;
+        ship = this.add.image(0, 0, "futurefighter")
         var cursors;
+        var text;
+        text = this.add.text(314, 996, "In the year 3025, America", 
+        { font: "65px Arial", fill: "#ff0044", align: "center" });
+        text.anchor.setTo(314, 996);
         //text = this.add.bitmapText(314, 996, "eightbitwonder", "In the year 3025, America");
         //text2 = this.add.bitmapText(314, 1036, "eightbitwonder", "has finally regained its former");
         //text3 =this.add.bitmapText(314, 1076, "eightbitwonder", "glory after years of cruel rule");
@@ -33,6 +37,7 @@ TrumpInvader.Game.prototype = {
         this.physics.startSystem(Phaser.Physics.P2JS);
         this.physics.p2.defaultRestitution = 0.8;
         this.physics.p2.enable(ship);
+        this.input.onDown.addOnce(this.removeText, this);
     },
     
     spaseshipMovement: function() {
@@ -53,20 +58,9 @@ TrumpInvader.Game.prototype = {
         {
             ship.body.moveDown(400);
         }
-    },
-    
-    create: function() {
-        var text;
-        text = this.add.text(314, 996, "In the year 3025, America", 
-        { font: "65px Arial", fill: "#ff0044", align: "center" });
-        text.anchor.setTo(314, 996);    
+    },    
 
-   
-
-        this.input.onDown.addOnce(removeText, this);
-
-},
-     removeText:function() {
+     removeText: function() {
 
             text.destroy();
 
