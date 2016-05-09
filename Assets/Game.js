@@ -1,3 +1,6 @@
+//var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', {create: create, update: update });
+
+
 TrumpInvader.Game = function(game) {
     this.enemyGroup;
     this.eshipGroup;
@@ -18,31 +21,22 @@ TrumpInvader.Game.prototype = {
     
     
     buildWorld: function() {
-        this.add.image(0, 0, "EvilTrump");
-        this.add.image(255, 975, "messagebox");
-        //var text;
-        //var text2;
-        //var text3;
         var ship;
         ship = this.add.image(0, 0, "futurefighter")
         var cursors;
-        var text;
-        text = this.add.text(314, 996, "In the year 3025, America", 
-        { font: "65px Arial", fill: "#ff0044", align: "center" });
-        text.anchor.setTo(314, 996);
-        //text = this.add.bitmapText(314, 996, "eightbitwonder", "In the year 3025, America");
-        //text2 = this.add.bitmapText(314, 1036, "eightbitwonder", "has finally regained its former");
-        //text3 =this.add.bitmapText(314, 1076, "eightbitwonder", "glory after years of cruel rule");
+       	game.physics.startSystem(Phaser.Physics.P2JS);
+        game.physics.p2.defaultRestitution = 0.8;
+        game.physics.p2.enable(sprite);
+        game.body.fixedRotation = true;
         cursors = this.input.keyboard.createCursorKeys();
-        this.physics.startSystem(Phaser.Physics.P2JS);
-        this.physics.p2.defaultRestitution = 0.8;
-        this.physics.p2.enable(ship);
-        this.input.onDown.addOnce(this.removeText, this);
+        sprite.inputEnabled = true;
+        sprite.events.onInputDown.add(onDown, this);
     },
     
-    spaseshipMovement: function() {
+
+    update: function() {
         if (cursors.left.isDown)
-        {
+           {
             ship.body.moveLeft(400);
         }
         else if (cursors.right.isDown)
@@ -58,14 +52,5 @@ TrumpInvader.Game.prototype = {
         {
             ship.body.moveDown(400);
         }
-    },    
-
-     removeText: function() {
-
-            text.destroy();
-
-},
-
-
-    update: function() {},
+    },
 };
