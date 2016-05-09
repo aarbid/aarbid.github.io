@@ -1,7 +1,7 @@
 TrumpInvader.StartMenu = function(game) {
     this.startBG;
     this.startPrompt;
-}
+};
 
 TrumpInvader.StartMenu.prototype = {
     
@@ -14,7 +14,7 @@ TrumpInvader.StartMenu.prototype = {
     },
     
     startGame: function (pointer) {
-        this.state.start('Game');
+        this.state.start('Intro1');
         
     },
     
