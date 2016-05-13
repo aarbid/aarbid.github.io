@@ -23,9 +23,22 @@ TrumpInvader.Game.prototype = {
     
     
     buildWorld: function() {
+<<<<<<< HEAD
         cursors = this.input.keyboard.createCursorKeys();
         this.add.image(0, 0, "city_background");
         ship = this.add.image(0, 0, "futurefighter");
+=======
+        var ship;
+        ship = this.add.image(0, 0, "futurefighter")
+        var cursors;
+       	game.physics.startSystem(Phaser.Physics.P2JS);
+        game.physics.p2.defaultRestitution = 0.8;
+        game.physics.p2.enable(sprite);
+        game.body.fixedRotation = true;
+        cursors = this.input.keyboard.createCursorKeys();
+        sprite.inputEnabled = true;
+        sprite.events.onInputDown.add(onDown, this);
+>>>>>>> origin/master
     },
     
 

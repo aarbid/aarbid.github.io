@@ -9,6 +9,7 @@ TrumpInvader.Objective= function(game) {
     this.startPrompt;
 }
 
+
 TrumpInvader.Objective.prototype = {
     
     create: function () {

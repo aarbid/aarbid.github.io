@@ -1,5 +1,7 @@
+
 TrumpInvader.Instructions = function(game) {
     this.ArrowKeys;
+    this.Plane;
     this.Message;
     this.text;
     this.text2;
@@ -21,7 +23,6 @@ TrumpInvader.Instructions.prototype = {
         text = this.add.bitmapText(314, 996, "eightbitwonder", "Use the arrow keys to move");
         text2 = this.add.bitmapText(314, 1036, "eightbitwonder", "the fighter plane. Use the");
         text3 =this.add.bitmapText(314, 1076, "eightbitwonder", "space bar to shoot.");
-        
         
     },
     
