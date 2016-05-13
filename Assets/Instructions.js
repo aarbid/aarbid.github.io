@@ -1,4 +1,3 @@
-
 TrumpInvader.Instructions = function(game) {
     this.ArrowKeys;
     this.Plane;
