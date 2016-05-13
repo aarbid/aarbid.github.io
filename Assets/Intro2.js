@@ -1,6 +1,6 @@
 TrumpInvader.Intro2 = function(game) {
     this.Trump;
-    this.Message
+    this.Message;
     this.text;
     this.text2;
     this.text3;

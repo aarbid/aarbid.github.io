@@ -9,6 +9,8 @@ TrumpInvader.Game = function(game) {
     this.health;
     this.score;
     this.music;
+    this.ship;
+    this.cursors;
 };
 TrumpInvader.Game.prototype = {
     create: function() {
@@ -21,16 +23,9 @@ TrumpInvader.Game.prototype = {
     
     
     buildWorld: function() {
-        var ship;
-        ship = this.add.image(0, 0, "futurefighter")
-        var cursors;
-       	game.physics.startSystem(Phaser.Physics.P2JS);
-        game.physics.p2.defaultRestitution = 0.8;
-        game.physics.p2.enable(sprite);
-        game.body.fixedRotation = true;
         cursors = this.input.keyboard.createCursorKeys();
-        sprite.inputEnabled = true;
-        sprite.events.onInputDown.add(onDown, this);
+        this.add.image(0, 0, "city_background");
+        ship = this.add.image(0, 0, "futurefighter");
     },
     
 
