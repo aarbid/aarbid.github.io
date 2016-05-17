@@ -31,7 +31,7 @@ TrumpInvader.Preloader.prototype = {
         this.load.image("tsupporter6plane", "pics/tsupporter6plane.gif");
         this.load.image("tsupporter7plane", "pics/tsupporter7plane.gif");
         this.load.image("arrow_keys", "pics/arrow_keys.gif");
-        this.load.image("city_background", "pics/city_background5.jpg");
+        this.load.image("city_background", "pics/city_background.jpg");
     },
     
 	update: function () {

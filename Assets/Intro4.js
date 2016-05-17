@@ -17,7 +17,7 @@ TrumpInvader.Intro4.prototype = {
         Message.inputEnabled = true;
         Trump.events.onInputDown.addOnce(this.startIntro5, this);
         Message.events.onInputDown.addOnce(this.startIntro5, this);
-        text = this.add.bitmapText(314, 996, "eightbitwonder", "yet another Great Depression.");
+        text = this.add.bitmapText(314, 996, "eightbitwonder", "yet another Great depression.");
         text2 = this.add.bitmapText(314, 1036, "eightbitwonder", "After severals years of conflict,");
         text3 =this.add.bitmapText(314, 1076, "eightbitwonder", "Trump was shut down from being");
         

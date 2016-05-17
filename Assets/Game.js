@@ -11,6 +11,7 @@ TrumpInvader.Game = function(game) {
     this.music;
     this.ship;
     this.cursors;
+    this.alive;
 };
 TrumpInvader.Game.prototype = {
     create: function() {
@@ -18,34 +19,33 @@ TrumpInvader.Game.prototype = {
         this.score = 0;
         this.music = this.add.audio("Bergentrückung");
         this.buildWorld();
+        this.alive = true
     },
     
     
     
     buildWorld: function() {
-        cursors = this.input.keyboard.createCursorKeys();
+        this.cursors = this.input.keyboard.createCursorKeys();
         this.add.image(0, 0, "city_background");
-        ship = this.add.image(0, 0, "futurefighter");
+        this.ship = this.add.image(0, 0, "futurefighter");
     },
     
 
     update: function() {
-        if (cursors.left.isDown)
-           {
-            ship.body.moveLeft(400);
-        }
-        else if (cursors.right.isDown)
-        {
-            ship.body.moveRight(400);
-        }
-
-        if (cursors.up.isDown)
-        {
-            ship.body.moveUp(400);
-        }
-        else if (cursors.down.isDown)
-        {
-            ship.body.moveDown(400);
+        if alive = true {
+            if (cursors.left.isDown) {
+            ship.body.velocity.x = -200;
+            }
+            else if (cursors.right.isDown) {
+            ship.body.velocity.x = 200  ;
+            }
+            
+            if (cursors.up.isDown) {
+            ship.body.velocity.y = 200;
+            }
+            else if (cursors.down.isDown) {
+            ship.body.velocity.y = -200;
+            }
         }
     },
 };
