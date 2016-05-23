@@ -7,7 +7,7 @@ TrumpInvader.Preloader.prototype = {
 	preload: function () {
 		this.load.image("startmenu", "pics/startmenu.png");
         this.load.bitmapFont("eightbitwonder", "font/eightbitwonder.png", "font/eightbitwonder.fnt");
-        this.load.image("trumpsupporter", "pics/trumpsupporter.gif");
+        this.load.image("trumpsupporter1", "pics/trumpsupporter.gif");
         this.load.image("trumpsupporter2", "pics/trumpsupporter2.gif");
         this.load.image("trumpsupporter3", "pics/trumpsupporter3.gif");
         this.load.image("trumpsupporter4", "pics/trumpsupporter4.gif");
@@ -22,7 +22,7 @@ TrumpInvader.Preloader.prototype = {
         this.load.image("futurefighter", "pics/futurefighter.gif");
         this.load.image("messagebox", "pics/messagebox.gif");
         this.load.image("Trump", "pics/Trump.png");
-        this.load.audio("Bergentrückung", "sounds/Bergentrückung.mp3");
+        this.load.audio("donaldtheme", "sounds/donaldtheme.mp3");
         this.load.image("tsupporter1plane", "pics/tsupporter1plane.gif");
         this.load.image("tsupporter2plane", "pics/tsupporter2plane.gif");
         this.load.image("tsupporter3plane", "pics/tsupporter3plane.gif");
