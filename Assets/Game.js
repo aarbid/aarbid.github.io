@@ -22,6 +22,9 @@ TrumpInvader.Game = function (game) {
     this.gameover;
     this.cursor;
     this.velocity;
+    this.bullets;
+    this.bulletTime = 0;
+    this.fireButton;
 };
 TrumpInvader.Game.prototype = {
     create: function() {
@@ -38,6 +41,17 @@ TrumpInvader.Game.prototype = {
         this.ship.body.bounce.x = 0.2;
         this.ship.body.bounce.y = 0.2;
         this.ship.anchor.setTo(0.5, 0.5);
+        this.bullets = this.add.group();
+        this.bullets.enableBody = true;
+        this.bullets.physicsBodyType = Phaser.Physics.ARCADE;
+        this.bullets = this.add.sprite(0, 0, "blast");
+        this.bullets.anchor.setTo('ship');
+        //this.bullets.createMultiple(30, 'blast');
+        /*/this.bullets.setAll('anchor.x', 0.5);
+        this.bullets.setAll('anchor.y', 1);
+        this.bullets.setAll('outOfBoundsKill', true);
+        this.bullets.setAll('checkWorldBounds', true);/*/
+        this.fireButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         
     },
     
@@ -71,7 +85,7 @@ TrumpInvader.Game.prototype = {
     buildPlane1: function() {
         this.tsp1 = this.add.group();
         for(var i=0; i<this.totalPlanes; i++) {
-            var p1 = this.tsp1.create(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(-1500, 0), "tsupporter1plane");
+            var p1 = this.tsp1.create(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(0, 0), "tsupporter1plane");
             this.physics.enable(p1, Phaser.Physics.ARCADE);
             p1.enableBody = true
             p1.body.velocity.y = this.rnd.intergerInRange(100, 150);
@@ -88,7 +102,7 @@ TrumpInvader.Game.prototype = {
     
     respawnP1: function (p1) {
         if(this.gameover == false) {
-            p1.reset(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(-1500, 0));
+            p1.reset(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(0, 0));
             p1.body.velocity.y = this.rnd.intergerInRange(100, 150);
         }
     }, 
@@ -96,7 +110,7 @@ TrumpInvader.Game.prototype = {
     buildPlane2: function() {
         this.tsp2 = this.add.group();
         for(var i=0; i<this.totalPlanes; i++) {
-            var p2 = this.tsp2.create(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(-1500, 0), "tsupporter2plane");
+            var p2 = this.tsp2.create(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(0, 0), "tsupporter2plane");
             this.physics.enable(p2, Phaser.Physics.ARCADE);
             p2.enableBody = true
             p2.body.velocity.y = this.rnd.intergerInRange(100, 150);
@@ -113,7 +127,7 @@ TrumpInvader.Game.prototype = {
     
     respawnP2: function (p2) {
         if(this.gameover == false) {
-            p2.reset(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(-1500, 0));
+            p2.reset(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(0, 0));
             p2.body.velocity.y = this.rnd.intergerInRange(100, 150);
         }
     },
@@ -121,7 +135,7 @@ TrumpInvader.Game.prototype = {
     buildPlane3: function() {
         this.tsp3 = this.add.group();
         for(var i=0; i<this.totalPlanes; i++) {
-            var p3 = this.tsp3.create(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(-1500, 0), "tsupporter3plane");
+            var p3 = this.tsp3.create(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(0, 0), "tsupporter3plane");
             this.physics.enable(p3, Phaser.Physics.ARCADE);
             p3.enableBody = true
             p3.body.velocity.y = this.rnd.intergerInRange(100, 150);
@@ -138,7 +152,7 @@ TrumpInvader.Game.prototype = {
     
     respawnP3: function (p3) {
         if(this.gameover == false) {
-            p3.reset(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(-1500, 0));
+            p3.reset(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(0, 0));
             p3.body.velocity.y = this.rnd.intergerInRange(100, 150);
         }
     },
@@ -146,7 +160,7 @@ TrumpInvader.Game.prototype = {
     buildPlane4: function() {
         this.tsp4 = this.add.group();
         for(var i=0; i<this.totalPlanes; i++) {
-            var p4 = this.tsp4.create(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(-1500, 0), "tsupporter4plane");
+            var p4 = this.tsp4.create(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(0, 0), "tsupporter4plane");
             this.physics.enable(p4, Phaser.Physics.ARCADE);
             p4.enableBody = true
             p4.body.velocity.y = this.rnd.intergerInRange(100, 150);
@@ -163,7 +177,7 @@ TrumpInvader.Game.prototype = {
     
     respawnP4: function (p4) {
         if(this.gameover == false) {
-            p4.reset(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(-1500, 0));
+            p4.reset(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(0, 0));
             p4.body.velocity.y = this.rnd.intergerInRange(100, 150);
         }
     },
@@ -171,7 +185,7 @@ TrumpInvader.Game.prototype = {
     buildPlane5: function() {
         this.tsp5 = this.add.group();
         for(var i=0; i<this.totalPlanes; i++) {
-            var p5 = this.tsp5.create(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(-1500, 0), "tsupporter5plane");
+            var p5 = this.tsp5.create(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(0, 0), "tsupporter5plane");
             this.physics.enable(p5, Phaser.Physics.ARCADE);
             p5.enableBody = true
             p5.body.velocity.y = this.rnd.intergerInRange(100, 150);
@@ -188,7 +202,7 @@ TrumpInvader.Game.prototype = {
     
     respawnP5: function (p5) {
         if(this.gameover == false) {
-            p5.reset(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(-1500, 0));
+            p5.reset(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(0, 0));
             p5.body.velocity.y = this.rnd.intergerInRange(100, 150);
         }
     },
@@ -196,7 +210,7 @@ TrumpInvader.Game.prototype = {
     buildPlane6: function() {
         this.tsp6 = this.add.group();
         for(var i=0; i<this.totalPlanes; i++) {
-            var p6 = this.tsp6.create(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(-1500, 0), "tsupporter6plane");
+            var p6 = this.tsp6.create(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(0, 0), "tsupporter6plane");
             this.physics.enable(p6, Phaser.Physics.ARCADE);
             p6.enableBody = true
             p6.body.velocity.y = this.rnd.intergerInRange(100, 150);
@@ -213,7 +227,7 @@ TrumpInvader.Game.prototype = {
     
     respawnP6: function (p6) {
         if(this.gameover == false) {
-            p6.reset(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(-1500, 0));
+            p6.reset(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(0, 0));
             p6.body.velocity.y = this.rnd.intergerInRange(100, 150);
         }
     },
@@ -221,7 +235,7 @@ TrumpInvader.Game.prototype = {
     buildPlane7: function() {
         this.tsp7 = this.add.group();
         for(var i=0; i<this.totalPlanes; i++) {
-            var p7 = this.tsp7.create(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(-1500, 0), "tsupporter7plane");
+            var p7 = this.tsp7.create(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(0, 0), "tsupporter7plane");
             this.physics.enable(p7, Phaser.Physics.ARCADE);
             p7.enableBody = true
             p7.body.velocity.y = this.rnd.intergerInRange(100, 150);
@@ -238,10 +252,32 @@ TrumpInvader.Game.prototype = {
     
     respawnP7: function (p7) {
         if(this.gameover == false) {
-            p7.reset(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(-1500, 0));
+            p7.reset(this.rnd.intergerInRange(0, this.world.width), this.rnd.realInRange(0, 0));
             p7.body.velocity.y = this.rnd.intergerInRange(100, 150);
         }
     },
+    
+    Shooting: function () {
+       if (this.fireButton.isDown) {
+           this.fireBullet();
+       }
+    },
+    
+    fireBullet: function (){
+        if (game.time.now> bulletTime){
+            bullet = bullets.getFirstExist(false);
+            if (bullet){
+                this.bullet.reset(player.x, player.y +8);
+                this.bullet.body.velocity.y = -400;
+                this.bulletTime = game.time.now + 200;
+            }
+        } 
+    },
+    
+    resetBullet: function (bullets){
+      this.bullet.kill();  
+    },
+    
 
     update: function() {
        this.playerMovement();
