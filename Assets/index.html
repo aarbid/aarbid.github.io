@@ -42,9 +42,8 @@
     var game = new Phaser.Game(1600,1200, Phaser.AUTO, 'gameContainer');
     game.state.add("Boot", TrumpInvader.Boot);
     game.state.add("Preloader", TrumpInvader.Preloader);
-    game.state.start("Boot")
-    game.state.add("StartMenu",
-    TrumpInvader.StartMenu);
+    game.state.start("Boot");
+    game.state.add("StartMenu", TrumpInvader.StartMenu);
     game.state.add("Intro1", TrumpInvader.Intro1);
     game.state.add("Intro2", TrumpInvader.Intro2);
     game.state.add("Intro3", TrumpInvader.Intro3);

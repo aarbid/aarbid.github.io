@@ -1,4 +1,4 @@
-TrumpInvader.Game = function(game) {
+TrumpInvader.Game = function (game) {
     this.tsp1;
     this.tsp2;
     this.tsp3;
@@ -29,42 +29,43 @@ TrumpInvader.Game.prototype = {
         this.score = 0;
         this.music = this.add.audio("donaldtheme");
         this.buildWorld();
-        this.ship = this.add.image(500, 500, "futurefighter");
         this.physics.startSystem(Phaser.Physics.ARCADE);
         this.totaplanes = 2
-
+        this.ship = this.add.sprite(0, 0, "futurefighter");
+        this.physics.arcade.enable(this.ship);
+        this.ship.body.collideWorldBounds = true;
+        this.ship.body.bounce.x = 0.2;
+        this.ship.body.bounce.y = 0.2;
+        this.ship.anchor.setTo(0.5, 0.5);
+        
     },
+    
     
     buildWorld: function() {
         this.add.image(0, 0, "city_background");
-       
-
     },
     
-   buildship: function () {
-        this.physics.enable(this.ship, Phaser.Physics.ARCADE);
-        this.ship.enableBody = true;
-        this.cursor = this.input.keyboard.createCursorKeys();
-        this.physics.arcade.collide(this.ship, null,this);
-
+    playerMovement: function () {
         if (this.cursor.left.isDown){
-            this.ship.body.velocity.X = -1500;
+            this.ship.body.velocity.x = -150;
         }
         else if (this.cursor.right.isDown){
-            this.ship.body.velocity.x = 1500;
+            this.ship.body.velocity.x = 150;
+        } else {
+            this.ship.body.velocity.x = 0;
         }
-        else if (this.cursor.down.isDown){
-            this.ship.body.velocity.y = 1500;
+        
+        if (this.cursor.down.isDown){
+            this.ship.body.velocity.y = 150;
         }
         else if (this.cursor.up.isDown){
-            this.ship.body.velocity.y = -1500;
+            this.ship.body.velocity.y = -150;
         }
         else {
             this.ship.body.velocity.y = 0;
-            this.ship.body.velocity.x = 0;
         } 
-        
-   },
+    },
+    
     
     buildPlane1: function() {
         this.tsp1 = this.add.group();
@@ -242,6 +243,6 @@ TrumpInvader.Game.prototype = {
     },
 
     update: function() {
-       
+       this.playerMovement();
     },
 };
