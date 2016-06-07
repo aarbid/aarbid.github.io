@@ -29,6 +29,7 @@ TrumpInvader.Game.prototype = {
         this.score = 0;
         this.music = this.add.audio("donaldtheme");
         this.buildWorld();
+        this.cursor = this.input.keyboard.createCursorKeys();        
         this.physics.startSystem(Phaser.Physics.ARCADE);
         this.totaplanes = 2
         this.ship = this.add.sprite(0, 0, "futurefighter");
@@ -47,19 +48,19 @@ TrumpInvader.Game.prototype = {
     
     playerMovement: function () {
         if (this.cursor.left.isDown){
-            this.ship.body.velocity.x = -150;
+            this.ship.body.velocity.x = -350;
         }
         else if (this.cursor.right.isDown){
-            this.ship.body.velocity.x = 150;
+            this.ship.body.velocity.x = 350;
         } else {
             this.ship.body.velocity.x = 0;
         }
         
         if (this.cursor.down.isDown){
-            this.ship.body.velocity.y = 150;
+            this.ship.body.velocity.y = 350;
         }
         else if (this.cursor.up.isDown){
-            this.ship.body.velocity.y = -150;
+            this.ship.body.velocity.y = -350;
         }
         else {
             this.ship.body.velocity.y = 0;
