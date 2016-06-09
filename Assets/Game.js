@@ -41,18 +41,26 @@ TrumpInvader.Game.prototype = {
         this.ship.body.bounce.x = 0.2;
         this.ship.body.bounce.y = 0.2;
         this.ship.anchor.setTo(0.5, 0.5);
-        this.bullets = this.add.group();
+        this.buildPlane1();
+        this.buildPlane2();
+        this.buildPlane3();
+        this.buildPlane4();
+        this.buildPlane5();
+        this.buildPlane6();
+        this.buildPlane7();
+        
+        /*/this.bullets = this.add.group();
         this.bullets.enableBody = true;
         this.bullets.physicsBodyType = Phaser.Physics.ARCADE;
         this.bullets = this.add.sprite(0, 0, "blast");
         this.bullets.anchor.setTo('ship');
-        //this.bullets.createMultiple(30, 'blast');
-        /*/this.bullets.setAll('anchor.x', 0.5);
+        this.bullets.createMultiple(5, 'blast');
+        this.bullets.setAll('anchor.x', 0.5);
         this.bullets.setAll('anchor.y', 1);
         this.bullets.setAll('outOfBoundsKill', true);
-        this.bullets.setAll('checkWorldBounds', true);/*/
+        this.bullets.setAll('checkWorldBounds', true);
         this.fireButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-        
+        /*/
     },
     
     
@@ -264,9 +272,9 @@ TrumpInvader.Game.prototype = {
     },
     
     fireBullet: function (){
-        if (game.time.now> bulletTime){
-            bullet = bullets.getFirstExist(false);
-            if (bullet){
+        if (this.time.now> this.bulletTime){
+            this.bullet = this.bullets.getFirstExist(false);
+            if (this.bullet){
                 this.bullet.reset(player.x, player.y +8);
                 this.bullet.body.velocity.y = -400;
                 this.bulletTime = game.time.now + 200;
@@ -280,6 +288,7 @@ TrumpInvader.Game.prototype = {
     
 
     update: function() {
-       this.playerMovement();
+        this.playerMovement();
+        this.fireBullet();
     },
 };
