@@ -44,8 +44,10 @@ TrumpInvader.Game.prototype = {
         this.bullets = this.add.group();
         this.bullets.enableBody = true;
         this.physics.enable(this.bullets, Phaser.Physics.ARCADE);
+        this.fireButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         
-        for (var i = 1; i < 20; i++)
+        
+        for (var i = 1; i < 50; i++)
         {
             var b = this.bullets.create(0, 0, 'blast');
             b.name = 'bullet' + i;
@@ -53,12 +55,9 @@ TrumpInvader.Game.prototype = {
             b.visible = false;
             b.checkWorldBounds = true;
             b.events.onOutOfBounds.add(this.resetBullet, this);
-           
-     
-        this.fireButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+        }
 
-            
-       }
+        
     },
     
     
@@ -72,6 +71,7 @@ TrumpInvader.Game.prototype = {
         this.buildPlane6();
         this.buildPlane7();
     },
+    
     
     playerMovement: function () {
         if (this.cursor.left.isDown){
@@ -100,7 +100,7 @@ TrumpInvader.Game.prototype = {
         var p1 = this.tsp1.create(this.rnd.integerInRange(0, this.world.width), this.rnd.realInRange(0, 0), "tsupporter1plane");
             this.physics.enable(p1, Phaser.Physics.ARCADE);
             p1.enableBody = true;
-            p1.body.velocity.y = this.rnd.integerInRange(100, 200); 
+            p1.body.velocity.y = this.rnd.integerInRange(100, 200);
             p1.checkWorldBounds = true;
             p1.events.onOutOfBounds.add(this.resetP1, this);
         /*for(var i=0; i<this.totalPlanes; i++) {
@@ -279,32 +279,28 @@ TrumpInvader.Game.prototype = {
     
     
     fireBullet: function () {
-
-    if (this.game.time.now > this.bulletTime)
-    {
         this.bullet = this.bullets.getFirstExists(false);
-
-        if (this.bullet)
+        if (this.game.time.now > this.bulletTime)
         {
-            this.bullet.reset(this.ship.x + 6, this.ship.y - 8);
+            this.bullet.reset(this.ship.x, this.ship.y - 6);
             this.bullet.body.velocity.y = -300;
             this.bulletTime = this.game.time.now + 150;
         }
-    }
-
+    
 },
+
     
     resetBullet: function (bullets){
-      this.bullet.kill();  
+      bullets.kill();  
     },
     
 
     update: function() {
         this.playerMovement();
+
         if (this.game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR))
         {
           this.fireBullet();
         }
-    
     },
 };
