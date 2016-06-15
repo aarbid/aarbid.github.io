@@ -25,17 +25,20 @@ TrumpInvader.Game = function (game) {
     this.bullets;
     this.bulletTime = 0;
     this.fireButton;
+    this.lives;
+    this.overmessage;
 };
 TrumpInvader.Game.prototype = {
     create: function() {
         this.gameover = false;
+        this.lives = 3
         this.score = 0;
         this.music = this.add.audio("donaldtheme");
         this.cursor = this.input.keyboard.createCursorKeys();        
         this.physics.startSystem(Phaser.Physics.ARCADE);
         this.totalplanes = 50;
         this.buildWorld();
-        this.ship = this.add.sprite(0, 0, "futurefighter");
+        this.ship = this.add.sprite(314, 1036, "futurefighter");
         this.physics.arcade.enable(this.ship);
         this.ship.body.collideWorldBounds = true;
         this.ship.body.bounce.x = 0.2;
@@ -70,6 +73,8 @@ TrumpInvader.Game.prototype = {
         this.buildPlane5();
         this.buildPlane6();
         this.buildPlane7();
+        this.displayLives();
+        this.displayScore();
     },
     
     
@@ -121,6 +126,20 @@ TrumpInvader.Game.prototype = {
         }
     }, 
     
+    blastCollisionP1: function(p1,b) {
+        this.respawnP1(p1);
+        b.kill();
+        this.updateScore();
+    },
+    
+    shipCollisionP1: function(ship, p1) {
+        if(ship.exists){
+            this.respawnP1(p1);
+            this.lifeDown();
+            this.displayLives();
+        }
+    },
+    
     buildPlane2: function() {
         this.tsp2 = this.add.group();
         var p2 = this.tsp2.create(this.rnd.integerInRange(0, this.world.width), this.rnd.realInRange(0, 0), "tsupporter2plane");
@@ -146,6 +165,20 @@ TrumpInvader.Game.prototype = {
             p2.body.velocity.y = this.rnd.integerInRange(100, 200);
         }
     }, 
+    
+    blastCollisionP2: function(p2,b) {
+        this.respawnP2(p2);
+        b.kill();
+        this.updateScore();
+    },
+    
+    shipCollisionP2: function(ship, p2) {
+        if(ship.exists){
+            this.respawnP2(p2);
+            this.lifeDown();
+            this.displayLives();
+        }
+    },
     
     buildPlane3: function() {
         this.tsp3 = this.add.group();
@@ -173,6 +206,21 @@ TrumpInvader.Game.prototype = {
         }
     }, 
     
+    
+    blastCollisionP3: function(p3,b) {
+        this.respawnP3(p3);
+        b.kill();
+        this.updateScore();
+    },
+    
+    shipCollisionP3: function(ship, p3) {
+        if(ship.exists){
+            this.respawnP3(p3);
+            this.lifeDown();
+            this.displayLives();
+        }
+    },
+    
     buildPlane4: function() {
         this.tsp4 = this.add.group();
         var p4 = this.tsp4.create(this.rnd.integerInRange(0, this.world.width), this.rnd.realInRange(0, 0), "tsupporter4plane");
@@ -198,6 +246,20 @@ TrumpInvader.Game.prototype = {
             p4.body.velocity.y = this.rnd.integerInRange(100, 200);
         }
     }, 
+    
+    blastCollisionP4: function(p4,b) {
+        this.respawnP4(p4);
+        b.kill();
+        this.updateScore();
+    },
+    
+    shipCollisionP4: function(ship, p4) {
+        if(ship.exists){
+            this.respawnP4(p4);
+            this.lifeDown();
+            this.displayLives();
+        }
+    },
     
     buildPlane5: function() {
         this.tsp5 = this.add.group();
@@ -225,6 +287,20 @@ TrumpInvader.Game.prototype = {
         }
     }, 
     
+    blastCollisionP5: function(p5,b) {
+        this.respawnP5(p5);
+        b.kill();
+        this.updateScore();
+    },
+    
+    shipCollisionP5: function(ship, p5) {
+        if(ship.exists){
+            this.respawnP5(p5);
+            this.lifeDown();
+            this.displayLives();
+        }
+    },
+    
     buildPlane6: function() {
         this.tsp6 = this.add.group();
         var p6 = this.tsp6.create(this.rnd.integerInRange(0, this.world.width), this.rnd.realInRange(0, 0), "tsupporter6plane");
@@ -250,6 +326,20 @@ TrumpInvader.Game.prototype = {
             p6.body.velocity.y = this.rnd.integerInRange(100, 200);
         }
     }, 
+    
+    blastCollisionP6: function(p6,b) {
+        this.respawnP6(p6);
+        b.kill();
+        this.updateScore();
+    },
+    
+    shipCollisionP6: function(ship, p6) {
+        if(ship.exists){
+            this.respawnP6(p6);
+            this.lifeDown();
+            this.displayLives();
+        }
+    },
     
     buildPlane7: function() {
         this.tsp7 = this.add.group();
@@ -277,6 +367,20 @@ TrumpInvader.Game.prototype = {
         }
     },
     
+    blastCollisionP7: function(p7,b) {
+        this.respawnP7(p7);
+        b.kill();
+        this.updateScore();
+    },
+    
+    shipCollisionP7: function(ship, p7) {
+        if(ship.exists){
+            this.respawnP7(p7);
+            this.lifeDown();
+            this.displayLives();
+        }
+    },
+    
     
     fireBullet: function () {
         this.bullet = this.bullets.getFirstExists(false);
@@ -294,9 +398,70 @@ TrumpInvader.Game.prototype = {
       bullets.kill();  
     },
     
+    lifeDown: function (){
+        text.kill();
+        if(this.lives > 0)
+            this.lives = this.lives - 1;
+        else
+            this.gameover();
+        
+    },
+    
+    displayLives: function () {
+        text2 = this.add.bitmapText(1345, 50, "eightbitwonder", "Lives: ")
+        text = this.add.bitmapText(1500, 50, "eightbitwonder", this.lives);
+    },
+    
+    showsScore: function(){
+            this.overmessage = this.add.bitmapText(this.world.centerX-180, this.world.centerY-40, 'eightbitwonder', 'GAME OVER\n\n' + this.Score, 42);
+            this.overmessage.align = "center";
+            this.overmessage.inputEnabled = true;
+            this.overmessage.events.onInputDown.addOnce(this.gameover, this);
+    },
+    
+    updateScore: function () {
+        text4.kill();
+        this.score = this.score + 50;
+        text3 = this.add.bitmapText(150, 50, "eightbitwonder", "Score: ");
+        text4 = this.add.bitmapText(410, 50, "eightbitwonder", this.score);
+    },
+    
+    updateScore2: function () {
+        this.score = this.score + 100;
+    },
+    
+    displayScore: function () {
+        text3 = this.add.bitmapText(150, 50, "eightbitwonder", "Score: ");
+        text4 = this.add.bitmapText(410, 50, "eightbitwonder", this.score);
+    },
+    
+    gameover: function() {
+        this.state.start('StartMenu');
+    },
 
     update: function() {
         this.playerMovement();
+        this.physics.arcade.overlap(this.tsp1, this.bullets, this.blastCollisionP1, null, this);
+        this.physics.arcade.overlap(this.tsp1, this.ship, this.shipCollisionP1, null, this);
+        
+        this.physics.arcade.overlap(this.tsp2, this.bullets, this.blastCollisionP2, null, this);
+        this.physics.arcade.overlap(this.tsp2, this.ship, this.shipCollisionP2, null, this);
+        
+        this.physics.arcade.overlap(this.tsp3, this.bullets, this.blastCollisionP3, null, this);
+        this.physics.arcade.overlap(this.tsp3, this.ship, this.shipCollisionP3, null, this);
+        
+        this.physics.arcade.overlap(this.tsp4, this.bullets, this.blastCollisionP4, null, this);
+        this.physics.arcade.overlap(this.tsp4, this.ship, this.shipCollisionP4, null, this);
+        
+        this.physics.arcade.overlap(this.tsp5, this.bullets, this.blastCollisionP5, null, this);
+        this.physics.arcade.overlap(this.tsp5, this.ship, this.shipCollisionP5, null, this);
+        
+        this.physics.arcade.overlap(this.tsp6, this.bullets, this.blastCollision61, null, this);
+        this.physics.arcade.overlap(this.tsp6, this.ship, this.shipCollisionP6, null, this);
+        
+        this.physics.arcade.overlap(this.tsp7, this.bullets, this.blastCollisionP7, null, this);
+        this.physics.arcade.overlap(this.tsp7, this.ship, this.shipCollisionP7, null, this);
+
 
         if (this.game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR))
         {
