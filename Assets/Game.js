@@ -13,6 +13,7 @@ TrumpInvader.Game = function (game) {
     this.ts5;
     this.ts6;
     this.ts7;
+    this.trump;
     this.totalPlanes;
     this.laserGroup;
     this.health;
@@ -381,14 +382,13 @@ TrumpInvader.Game.prototype = {
         }
     },
     
-    
     fireBullet: function () {
         this.bullet = this.bullets.getFirstExists(false);
         if (this.game.time.now > this.bulletTime)
         {
             this.bullet.reset(this.ship.x, this.ship.y - 6);
             this.bullet.body.velocity.y = -300;
-            this.bulletTime = this.game.time.now + 150;
+            this.bulletTime = this.game.time.now + 250;
         }
     
 },
@@ -403,7 +403,7 @@ TrumpInvader.Game.prototype = {
         if(this.lives > 0)
             this.lives = this.lives - 1;
         else
-            this.gameover();
+            this.showsScore();
         
     },
     
@@ -413,10 +413,12 @@ TrumpInvader.Game.prototype = {
     },
     
     showsScore: function(){
-            this.overmessage = this.add.bitmapText(this.world.centerX-180, this.world.centerY-40, 'eightbitwonder', 'GAME OVER\n\n' + this.Score, 42);
+            this.ship.kill();
+            this.gameover= true;
+            this.overmessage = this.add.bitmapText(this.world.centerX-180, this.world.centerY-40, 'eightbitwonder', 'GAME OVER\n\n' + this.score, 42);
             this.overmessage.align = "center";
             this.overmessage.inputEnabled = true;
-            this.overmessage.events.onInputDown.addOnce(this.gameover, this);
+            this.overmessage.events.onInputDown.addOnce(this.gameover1, this);
     },
     
     updateScore: function () {
@@ -424,10 +426,12 @@ TrumpInvader.Game.prototype = {
         this.score = this.score + 50;
         text3 = this.add.bitmapText(150, 50, "eightbitwonder", "Score: ");
         text4 = this.add.bitmapText(410, 50, "eightbitwonder", this.score);
+        if(this.score > 3000)
+            this.spawnTrump();
     },
     
     updateScore2: function () {
-        this.score = this.score + 100;
+        this.score = this.score + 1000;
     },
     
     displayScore: function () {
@@ -435,8 +439,23 @@ TrumpInvader.Game.prototype = {
         text4 = this.add.bitmapText(410, 50, "eightbitwonder", this.score);
     },
     
-    gameover: function() {
+    gameover1: function() {
         this.state.start('StartMenu');
+    },
+    
+    spawnTrump: function(score) {
+        this.trump = this.add.sprite(600, 300, "trumphead")
+        this.trumpStuff(this.trump)
+    },
+    
+    trumpStuff: function(t){
+        var tlives = 20;
+        if(tlives < 1)
+            t.kill();
+    },
+    
+    tcollide: function(t, b){
+        this.tlives = this.tlives - 1
     },
 
     update: function() {
@@ -456,7 +475,7 @@ TrumpInvader.Game.prototype = {
         this.physics.arcade.overlap(this.tsp5, this.bullets, this.blastCollisionP5, null, this);
         this.physics.arcade.overlap(this.tsp5, this.ship, this.shipCollisionP5, null, this);
         
-        this.physics.arcade.overlap(this.tsp6, this.bullets, this.blastCollision61, null, this);
+        this.physics.arcade.overlap(this.tsp6, this.bullets, this.blastCollisionP6, null, this);
         this.physics.arcade.overlap(this.tsp6, this.ship, this.shipCollisionP6, null, this);
         
         this.physics.arcade.overlap(this.tsp7, this.bullets, this.blastCollisionP7, null, this);
